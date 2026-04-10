@@ -119,19 +119,6 @@
       50%       { transform: translateY(-8px); }
     }
     p { font-size: 1.2rem; font-weight: 400; letter-spacing: -0.01em; color: var(--subtitle); }
-
-    .name { cursor: default; }
-    .sparkle {
-      position: fixed;
-      pointer-events: none;
-      font-size: 1.2rem;
-      animation: sparkle-burst 700ms ease-out forwards;
-      z-index: 10;
-    }
-    @keyframes sparkle-burst {
-      0%   { transform: translate(0, 0) scale(1); opacity: 1; }
-      100% { transform: translate(var(--dx), var(--dy)) scale(0.3); opacity: 0; }
-    }
   </style>
 </head>
 <body>
@@ -140,36 +127,8 @@
   <div class="blob blob-3"></div>
 
   <div class="content">
-    <h1>Hi, I'm <span class="name">Daria Epure</span><span class="bunny">🐰</span></h1>
+    <h1>Hi, I'm <span>Daria Epure</span><span class="bunny">🐰</span></h1>
     <p>UX product designer making security feel human @ Bitdefender</p>
   </div>
-  <script>
-    const name = document.querySelector('.name');
-    let interval = null;
-
-    function spawnSparkle() {
-      const rect = name.getBoundingClientRect();
-      const x = rect.left + Math.random() * rect.width;
-      const y = rect.top + Math.random() * rect.height;
-      const angle = Math.random() * 2 * Math.PI;
-      const dist = 30 + Math.random() * 50;
-
-      const el = document.createElement('span');
-      el.className = 'sparkle';
-      el.textContent = '✨';
-      el.style.left = x + 'px';
-      el.style.top = y + 'px';
-      el.style.setProperty('--dx', Math.cos(angle) * dist + 'px');
-      el.style.setProperty('--dy', Math.sin(angle) * dist + 'px');
-      document.body.appendChild(el);
-      el.addEventListener('animationend', () => el.remove());
-    }
-
-    name.addEventListener('mouseenter', () => {
-      spawnSparkle();
-      interval = setInterval(spawnSparkle, 120);
-    });
-    name.addEventListener('mouseleave', () => clearInterval(interval));
-  </script>
 </body>
 </html>
