@@ -129,10 +129,33 @@
 
     h1 { font-size: 3rem; font-weight: 800; letter-spacing: -0.03em; }
     h1 span { color: #0891b2; }
-    .bunny { color: initial; display: inline-block; animation: bounce 2.4s ease-in-out infinite; }
+    .bunny {
+      color: initial;
+      display: inline-block;
+      animation: bounce 2.4s ease-in-out infinite;
+      transition: transform 1.2s ease-in-out;
+    }
+    .bunny.asleep {
+      animation: none;
+      transform: rotate(90deg);
+      display: inline-block;
+    }
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
       50%       { transform: translateY(-8px); }
+    }
+
+    .ripple {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      transform: translate(-50%, -50%) scale(0);
+      animation: ripple-out 1s ease-out forwards;
+    }
+    @keyframes ripple-out {
+      0%   { transform: translate(-50%, -50%) scale(0); opacity: 0.5; }
+      100% { transform: translate(-50%, -50%) scale(6); opacity: 0; }
     }
     p { font-size: 1.2rem; font-weight: 400; letter-spacing: -0.01em; color: var(--subtitle); }
   </style>
@@ -146,5 +169,49 @@
     <h1>Hi, I'm <span>Daria Epure</span><span class="bunny">🐰</span></h1>
     <p>UX product designer making security feel human @ Bitdefender</p>
   </div>
+  <script>
+    // — Ripple on click —
+    document.addEventListener('click', e => {
+      const ripple = document.createElement('div');
+      ripple.className = 'ripple';
+      const size = 120;
+      ripple.style.width  = size + 'px';
+      ripple.style.height = size + 'px';
+      ripple.style.left   = e.clientX + 'px';
+      ripple.style.top    = e.clientY + 'px';
+      ripple.style.background = 'radial-gradient(circle, #0891b2, #a3d9a5)';
+      ripple.style.filter = 'blur(20px)';
+      document.body.appendChild(ripple);
+      ripple.addEventListener('animationend', () => ripple.remove());
+    });
+
+    // — Sleepy bunny —
+    const bunny = document.querySelector('.bunny');
+    let sleepTimer = null;
+    let asleep = false;
+
+    function goToSleep() {
+      asleep = true;
+      bunny.textContent = '😴';
+      bunny.classList.add('asleep');
+    }
+
+    function wakeUp() {
+      if (!asleep) return;
+      asleep = false;
+      bunny.classList.remove('asleep');
+      bunny.textContent = '🐰';
+    }
+
+    function resetTimer() {
+      clearTimeout(sleepTimer);
+      wakeUp();
+      sleepTimer = setTimeout(goToSleep, 5000);
+    }
+
+    document.addEventListener('mousemove', resetTimer);
+    document.addEventListener('touchstart', resetTimer);
+    resetTimer();
+  </script>
 </body>
 </html>
