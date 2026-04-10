@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Daria Epure – UX Designer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -153,7 +153,7 @@
     }
     p { font-size: 1.2rem; font-weight: 400; letter-spacing: -0.01em; color: var(--subtitle); }
 
-    .name { display: inline-block; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; }
+    .name { display: inline-block; }
   </style>
 </head>
 <body>
@@ -181,24 +181,6 @@
       ripple.addEventListener('animationend', () => ripple.remove());
     });
 
-    // — Subtle text tilt on mouse move —
-    const content = document.querySelector('.content');
-    let lastX = window.innerWidth / 2;
-    let currentTilt = 0;
-    let targetTilt = 0;
-
-    document.addEventListener('mousemove', e => {
-      const dx = e.clientX - lastX;
-      targetTilt = Math.max(-2, Math.min(2, dx * 0.04));
-      lastX = e.clientX;
-    });
-
-    (function tiltLoop() {
-      currentTilt += (targetTilt - currentTilt) * 0.08;
-      targetTilt *= 0.9;
-      content.style.transform = `rotate(${currentTilt}deg)`;
-      requestAnimationFrame(tiltLoop);
-    })();
 
 
   </script>
