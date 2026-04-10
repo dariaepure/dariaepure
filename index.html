@@ -119,6 +119,15 @@
       50%       { transform: translateY(-8px); }
     }
     p { font-size: 1.2rem; font-weight: 400; letter-spacing: -0.01em; color: var(--subtitle); }
+
+    #follower {
+      position: fixed;
+      font-size: 1.1rem;
+      pointer-events: none;
+      z-index: 100;
+      transform: translate(-50%, -50%);
+      transition: none;
+    }
   </style>
 </head>
 <body>
@@ -130,5 +139,22 @@
     <h1>Hi, I'm <span>Daria Epure</span><span class="bunny">🐰</span></h1>
     <p>UX product designer making security feel human @ Bitdefender</p>
   </div>
+  <div id="follower">🐇</div>
+  <script>
+    const follower = document.getElementById('follower');
+    let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+    let fx = mx, fy = my;
+
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+    function loop() {
+      fx += (mx - fx) * 0.06;
+      fy += (my - fy) * 0.06;
+      follower.style.left = fx + 'px';
+      follower.style.top  = fy + 'px';
+      requestAnimationFrame(loop);
+    }
+    loop();
+  </script>
 </body>
 </html>
