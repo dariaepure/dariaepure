@@ -181,26 +181,6 @@
       ripple.addEventListener('animationend', () => ripple.remove());
     });
 
-    // — Subtle text tilt on mouse move —
-    const content = document.querySelector('.content');
-    let lastX = window.innerWidth / 2;
-    let currentTilt = 0;
-    let targetTilt = 0;
-
-    document.addEventListener('mousemove', e => {
-      const dx = e.clientX - lastX;
-      targetTilt = Math.max(-2, Math.min(2, dx * 0.04));
-      lastX = e.clientX;
-    });
-
-    (function tiltLoop() {
-      currentTilt += (targetTilt - currentTilt) * 0.08;
-      targetTilt *= 0.9;
-      content.style.transform = `rotate(${currentTilt}deg)`;
-      requestAnimationFrame(tiltLoop);
-    })();
-
-
   </script>
 </body>
 </html>
