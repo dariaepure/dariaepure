@@ -133,12 +133,6 @@
       color: initial;
       display: inline-block;
       animation: bounce 2.4s ease-in-out infinite;
-      transition: transform 1.2s ease-in-out;
-    }
-    .bunny.asleep {
-      animation: none;
-      transform: rotate(90deg);
-      display: inline-block;
     }
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
@@ -229,33 +223,6 @@
     });
     name.addEventListener('animationend', () => name.classList.remove('glitch'));
 
-    // — Sleepy bunny —
-    const bunny = document.querySelector('.bunny');
-    let sleepTimer = null;
-    let asleep = false;
-
-    function goToSleep() {
-      asleep = true;
-      bunny.textContent = '😴';
-      bunny.classList.add('asleep');
-    }
-
-    function wakeUp() {
-      if (!asleep) return;
-      asleep = false;
-      bunny.classList.remove('asleep');
-      bunny.textContent = '🐰';
-    }
-
-    function resetTimer() {
-      clearTimeout(sleepTimer);
-      wakeUp();
-      sleepTimer = setTimeout(goToSleep, 5000);
-    }
-
-    document.addEventListener('mousemove', resetTimer);
-    document.addEventListener('touchstart', resetTimer);
-    resetTimer();
   </script>
 </body>
 </html>
