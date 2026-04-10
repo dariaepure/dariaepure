@@ -8,10 +8,26 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    :root {
+      --bg: #f5f0e8;
+      --text: #111;
+      --subtitle: #555;
+      --blob-opacity: 0.35;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f0f0f;
+        --text: #f0ece4;
+        --subtitle: #999;
+        --blob-opacity: 0.2;
+      }
+    }
+
     body {
       font-family: 'Raleway', sans-serif;
-      background: #f5f0e8;
-      color: #111;
+      background: var(--bg);
+      color: var(--text);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -26,7 +42,7 @@
       position: fixed;
       border-radius: 50%;
       filter: blur(60px);
-      opacity: 0.35;
+      opacity: var(--blob-opacity);
       z-index: 0;
     }
 
@@ -97,7 +113,7 @@
 
     h1 { font-size: 3rem; font-weight: 800; letter-spacing: -0.03em; }
     h1 span { color: #0891b2; }
-    p { font-size: 1.2rem; font-weight: 400; letter-spacing: -0.01em; color: #555; }
+    p { font-size: 1.2rem; font-weight: 400; letter-spacing: -0.01em; color: var(--subtitle); }
   </style>
 </head>
 <body>
