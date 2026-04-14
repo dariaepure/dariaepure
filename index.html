@@ -163,24 +163,6 @@
     }
 
     /* — Underline — */
-    .name-wrap {
-      display: inline-block;
-      position: relative;
-    }
-    .underline-wrap {
-      display: block;
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -10px;
-      height: 20px;
-      overflow: visible;
-    }
-    .underline-wrap svg {
-      width: 100%;
-      height: 20px;
-      overflow: visible;
-    }
     .squiggle {
       fill: none;
       stroke: #c0392b;
@@ -189,37 +171,9 @@
       stroke-linejoin: round;
       stroke-dasharray: 1;
       stroke-dashoffset: 1;
-      pathLength: 1;
       animation: draw-line 0.9s ease forwards 1.1s;
     }
     @keyframes draw-line {
-      to { stroke-dashoffset: 0; }
-    }
-
-    /* — Margin stars — */
-    .stars {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-    }
-    .star-path {
-      fill: none;
-      stroke: #0891b2;
-      stroke-width: 1.5;
-      stroke-linecap: round;
-      opacity: 0.45;
-      stroke-dasharray: 1;
-      stroke-dashoffset: 1;
-    }
-    .star-path:nth-child(1) { animation: draw-star 0.4s ease forwards 1.5s; }
-    .star-path:nth-child(2) { animation: draw-star 0.4s ease forwards 1.9s; }
-    .star-path:nth-child(3) { animation: draw-star 0.4s ease forwards 2.3s; }
-    .star-path:nth-child(4) { animation: draw-star 0.4s ease forwards 2.7s; }
-    .star-path:nth-child(5) { animation: draw-star 0.4s ease forwards 3.1s; }
-    @keyframes draw-star {
       to { stroke-dashoffset: 0; }
     }
 
@@ -267,24 +221,28 @@
   <div class="blob blob-3"></div>
 
   <div class="content">
-    <h1><span class="intro">Hi, I'm&nbsp;</span><span class="name-wrap"><span class="name">Daria Epure</span><span class="underline-wrap"><svg viewBox="0 0 500 20" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path class="squiggle" pathLength="1" d="M0,12 C30,5 60,18 90,12 C120,5 150,18 180,12 C210,5 240,18 270,12 C300,5 330,18 360,12 C390,5 420,18 450,12 C470,6 490,14 500,12"/></svg></span></span><span class="bunny">🐰</span></h1>
+    <h1><span class="intro">Hi, I'm&nbsp;</span><span class="name">Daria Epure</span><span class="bunny">🐰</span></h1>
     <p>UX product designer making security feel human @ Bitdefender</p>
   </div>
 
-  <!-- Margin stars: simple 3-line asterisks, pathLength=1 -->
-  <svg class="stars" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-    <!-- top-left -->
-    <path class="star-path" pathLength="1" d="M80,80 L80,104 M68,86 L92,98 M92,86 L68,98"/>
-    <!-- top-right -->
-    <path class="star-path" pathLength="1" d="M900,60 L900,78 M891,65 L909,73 M909,65 L891,73"/>
-    <!-- bottom-left -->
-    <path class="star-path" pathLength="1" d="M60,580 L60,600 M50,585 L70,595 M70,585 L50,595"/>
-    <!-- bottom-right (red) -->
-    <path class="star-path" pathLength="1" style="stroke: #c0392b; opacity: 0.55;" d="M920,600 L920,622 M909,606 L931,616 M931,606 L909,616"/>
-    <!-- mid-left -->
-    <path class="star-path" pathLength="1" d="M40,340 L40,358 M31,345 L49,353 M49,345 L31,353"/>
+  <!-- Underline SVG, positioned via JS -->
+  <svg id="squiggle-svg" style="position:fixed;pointer-events:none;z-index:3;overflow:visible;" viewBox="0 0 500 20" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path class="squiggle" pathLength="1" d="M0,12 C30,5 60,18 90,12 C120,5 150,18 180,12 C210,5 240,18 270,12 C300,5 330,18 360,12 C390,5 420,18 450,12 C470,6 490,14 500,12"/>
   </svg>
   <script>
+    // — Position squiggle under name —
+    function positionSquiggle() {
+      const name = document.querySelector('.name');
+      const svg  = document.getElementById('squiggle-svg');
+      const r    = name.getBoundingClientRect();
+      svg.style.left   = r.left + 'px';
+      svg.style.top    = (r.bottom + 6) + 'px';
+      svg.style.width  = r.width + 'px';
+      svg.style.height = '20px';
+    }
+    window.addEventListener('load', positionSquiggle);
+    window.addEventListener('resize', positionSquiggle);
+
     // — Ripple on click —
     document.addEventListener('click', e => {
       const ripple = document.createElement('div');
