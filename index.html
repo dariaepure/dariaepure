@@ -132,6 +132,7 @@
     .intro {
       display: inline-block;
       opacity: 0;
+      color: #c0392b;
       animation: fade-in 0.6s ease forwards;
     }
     .name {
@@ -143,6 +144,8 @@
     .bunny {
       display: inline-block;
       opacity: 0;
+      font-size: 0.6em;
+      vertical-align: middle;
       animation: fade-in 0.6s ease forwards 0.5s, bounce 2.4s ease-in-out infinite 1.2s;
     }
 
@@ -162,7 +165,7 @@
 
     /* — Underline — */
     .underline-wrap {
-      width: 100%;
+      width: 55%;
       height: 20px;
       overflow: visible;
       margin-top: 4px;
@@ -226,7 +229,7 @@
       0%   { transform: translate(-50%, -50%) scale(0); opacity: 0.5; }
       100% { transform: translate(-50%, -50%) scale(6); opacity: 0; }
     }
-    p { font-size: 1.2rem; font-weight: 400; letter-spacing: -0.01em; color: var(--subtitle); }
+    p { font-size: 1.3rem; font-weight: 400; letter-spacing: -0.01em; color: var(--subtitle); }
 
     .grain {
       position: fixed;
@@ -275,8 +278,8 @@
     <path class="star-path" pathLength="1" d="M900,60 L900,78 M891,65 L909,73 M909,65 L891,73"/>
     <!-- bottom-left -->
     <path class="star-path" pathLength="1" d="M60,580 L60,600 M50,585 L70,595 M70,585 L50,595"/>
-    <!-- bottom-right -->
-    <path class="star-path" pathLength="1" d="M920,600 L920,622 M909,606 L931,616 M931,606 L909,616"/>
+    <!-- bottom-right (red) -->
+    <path class="star-path" pathLength="1" style="stroke: #c0392b; opacity: 0.55;" d="M920,600 L920,622 M909,606 L931,616 M931,606 L909,616"/>
     <!-- mid-left -->
     <path class="star-path" pathLength="1" d="M40,340 L40,358 M31,345 L49,353 M49,345 L31,353"/>
   </svg>
