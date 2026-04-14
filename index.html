@@ -163,11 +163,17 @@
     }
 
     /* — Underline — */
+    .name-wrap {
+      display: inline-block;
+      position: relative;
+    }
     .underline-wrap {
-      width: 55%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -10px;
       height: 20px;
       overflow: visible;
-      margin-top: 4px;
     }
     .underline-wrap svg {
       width: 100%;
@@ -260,12 +266,7 @@
   <div class="blob blob-3"></div>
 
   <div class="content">
-    <h1><span class="intro">Hi, I'm&nbsp;</span><span class="name">Daria Epure</span><span class="bunny">🐰</span></h1>
-    <div class="underline-wrap">
-      <svg viewBox="0 0 500 20" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path class="squiggle" pathLength="1" d="M0,12 C30,5 60,18 90,12 C120,5 150,18 180,12 C210,5 240,18 270,12 C300,5 330,18 360,12 C390,5 420,18 450,12 C470,6 490,14 500,12"/>
-      </svg>
-    </div>
+    <h1><span class="intro">Hi, I'm&nbsp;</span><span class="name-wrap"><span class="name">Daria Epure</span><div class="underline-wrap"><svg viewBox="0 0 500 20" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path class="squiggle" pathLength="1" d="M0,12 C30,5 60,18 90,12 C120,5 150,18 180,12 C210,5 240,18 270,12 C300,5 330,18 360,12 C390,5 420,18 450,12 C470,6 490,14 500,12"/></svg></div></span><span class="bunny">🐰</span></h1>
     <p>UX product designer making security feel human @ Bitdefender</p>
   </div>
 
