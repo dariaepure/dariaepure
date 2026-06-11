@@ -86,18 +86,15 @@ h1 .bunny{font-style:normal;display:inline-block;animation:hop 3.2s ease-in-out 
   background:var(--teal);color:#fff;font-weight:600;
   padding:.02em .3em .08em;border-radius:.3em;white-space:nowrap;
 }
-.cta{margin-top:32px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.cta{margin-top:28px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
 .btn{
   font-weight:500;font-size:.82rem;
-  padding:7px 16px;border-radius:999px;text-decoration:none;
-  transition:transform .15s,background .2s;
+  text-decoration:none;color:var(--ink-soft);opacity:.75;
+  border-bottom:1px solid rgba(1,38,58,.3);padding-bottom:1px;
+  transition:opacity .2s;
 }
-.btn:hover{transform:translateY(-2px)}
+.btn:hover{opacity:1}
 .btn:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
-.btn-primary{background:rgba(255,255,255,.6);color:var(--ink-soft);border:1.5px solid rgba(1,38,58,.25)}
-.btn-primary:hover{background:rgba(255,255,255,.9)}
-.btn-ghost{background:rgba(255,255,255,.6);color:var(--ink-soft);border:1.5px solid rgba(1,38,58,.25)}
-.btn-ghost:hover{background:rgba(255,255,255,.9)}
 
 /* ---------- floating cursors ---------- */
 .cursor-tag{
