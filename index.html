@@ -86,15 +86,12 @@ h1 .bunny{font-style:normal;display:inline-block;animation:hop 3.2s ease-in-out 
   background:var(--teal);color:#fff;font-weight:600;
   padding:.02em .3em .08em;border-radius:.3em;white-space:nowrap;
 }
-.cta{margin-top:28px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
-.btn{
-  font-weight:500;font-size:.82rem;
-  text-decoration:none;color:var(--ink-soft);opacity:.75;
-  border-bottom:1px solid rgba(1,38,58,.3);padding-bottom:1px;
-  transition:opacity .2s;
+.footer-link{
+  color:inherit;text-decoration:underline;text-underline-offset:2px;
+  text-decoration-color:rgba(1,38,58,.3);transition:text-decoration-color .2s;
 }
-.btn:hover{opacity:1}
-.btn:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+.footer-link:hover{text-decoration-color:currentColor}
+.footer-link:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
 
 /* ---------- floating cursors ---------- */
 .cursor-tag{
@@ -194,13 +191,9 @@ footer{
     <span class="row"><span class="highlight">Daria</span> <span class="bunny">🐇</span></span>
   </h1>
   <p class="tagline">UX product designer making <span class="hl">security feel human</span>. Turning complex protection into calm, clear consumer experiences.</p>
-  <div class="cta">
-    <a class="btn btn-primary" href="https://www.linkedin.com/in/dariaepure" rel="me">LinkedIn</a>
-    <a class="btn btn-ghost" href="mailto:daria.stoian@gmail.com">Say hello</a>
-  </div>
 </main>
 
-<footer>Made with care (and a faint grid) in Bucharest · © <span id="yr">2026</span> Daria Epure</footer>
+<footer>Made with care (and a faint grid) in Bucharest · © <span id="yr">2026</span> Daria Epure · <a class="footer-link" href="https://www.linkedin.com/in/dariaepure" rel="me">LinkedIn</a> · <a class="footer-link" href="mailto:daria.stoian@gmail.com">Say hello</a></footer>
 
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
